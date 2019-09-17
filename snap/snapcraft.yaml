@@ -11,6 +11,8 @@ parts:
   bundle-lint:
     plugin: strace_rust
     source: .
+    build-packages:
+      - strace
 
 apps:
   arm-test:
