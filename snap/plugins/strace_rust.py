@@ -153,7 +153,7 @@ class RustPlugin(snapcraft.BasePlugin):
         # https://github.com/rust-lang/rustup.rs/blob/master/README.md#cross-compilation
         if self.project.is_cross_compiling:
             add_target_cmd = [
-                'strace', '-s', '1024', '-f', '-tt', 'T',
+                'strace', '-s', '1024', '-f', '-tt', '-T',
                 self._rustup_cmd, "target", "add"
             ]
             if toolchain is not None:
