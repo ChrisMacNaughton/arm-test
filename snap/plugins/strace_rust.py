@@ -146,14 +146,14 @@ class RustPlugin(snapcraft.BasePlugin):
         if toolchain is not None:
             # https://rust-lang-nursery.github.io/edition-guide/rust-2018/rustup-for-managing-rust-versions.html
             self.run([
-                'strace', '-s', '1024', '-f', '-tt',
+                'strace', '-s', '1024', '-f', '-tt', '-T',
                 self._rustup_cmd, "install", toolchain], env=self._build_env())
 
         # Add the appropriate target cross compilation target if necessary.
         # https://github.com/rust-lang/rustup.rs/blob/master/README.md#cross-compilation
         if self.project.is_cross_compiling:
             add_target_cmd = [
-                'strace', '-s', '1024', '-f', '-tt',
+                'strace', '-s', '1024', '-f', '-tt', 'T',
                 self._rustup_cmd, "target", "add"
             ]
             if toolchain is not None:
